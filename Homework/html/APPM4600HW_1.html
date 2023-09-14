@@ -1,0 +1,225 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>APPM4600HW_1</title><meta name="generator" content="MATLAB 9.9"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-09-08"><meta name="DC.source" content="APPM4600HW_1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Problem 1i</a></li><li><a href="#3">Problem 1ii</a></li><li><a href="#4">Problem 1iii</a></li><li><a href="#5">Problem 2i</a></li><li><a href="#6">Problem 2ii</a></li></ul></div><pre class="codeinput"><span class="comment">%%APPM 4600 Homework 1</span>
+
+clc
+clear
+close <span class="string">all</span>
+
+<span class="comment">% 1: i)Need to plot p(x)for several x values</span>
+<span class="comment">%   ii) Plot p(x) using a different form</span>
+<span class="comment">%  iii) find the discrepancy in the two graphs</span>
+</pre><h2 id="2">Problem 1i</h2><p>Creating X variable</p><pre class="codeinput">x = 1.920:0.001: 2.080 ;
+
+<span class="comment">% Creating P(X)</span>
+p1 = x.^9 - 18.*x.^8 +144.*x.^7 - 672.*x.^6 +2016.*x.^5 - 4032.*x.^4 +5376.*x.^3 - 4608.*x.^2 +2304.*x - 512;
+<span class="comment">% Dummy Variable to plot against</span>
+x1 = linspace(0,max(x),length(x));
+
+<span class="comment">% Plotting the results</span>
+figure
+plot(x1,p1)
+title(<span class="string">'Problem 1i Graph'</span>)
+xlabel(<span class="string">'x-axis'</span>)
+ylabel(<span class="string">'y-axis'</span>)
+</pre><img vspace="5" hspace="5" src="APPM4600HW_1_01.png" alt=""> <h2 id="3">Problem 1ii</h2><pre class="codeinput"><span class="comment">% Creating P(x) for problem 1ii</span>
+p2 = (x-2).^9;
+
+figure
+plot(x1,p2)
+title(<span class="string">'Problem 1ii Graph'</span>)
+xlabel(<span class="string">'x-axis'</span>)
+ylabel(<span class="string">'y-axis'</span>)
+</pre><img vspace="5" hspace="5" src="APPM4600HW_1_02.png" alt=""> <h2 id="4">Problem 1iii</h2><pre class="codeinput"><span class="comment">% The discrepancy is that (x-2)^9 is smooth while the other form is very</span>
+<span class="comment">% rough</span>
+
+<span class="comment">%The reason is because several values are being lost as they are too small</span>
+<span class="comment">%for the computer</span>
+
+<span class="comment">%The (x-2)^9 form is correct</span>
+
+<span class="comment">% find absolute error!!!!!!!!!!!</span>
+</pre><h2 id="5">Problem 2i</h2><pre class="codeinput">x = 2*10^-100;
+z = sqrt(x+1)
+
+y = ((z-1 * -z))/(-z)
+</pre><pre class="codeoutput">
+z =
+
+     1
+
+
+y =
+
+    -2
+
+</pre><h2 id="6">Problem 2ii</h2><pre class="codeinput"><span class="comment">%sin(x) - sin(y) = 2sin((x-y)/2)cos((x+y)/2)</span>
+
+<span class="comment">% Use trig identities to avoid the cancellation of sines</span>
+
+<span class="comment">%Create dummy variables that are approximately equal</span>
+x = 100;
+y= x - 10^-50;
+u = (x-y)/2;
+v = (x+y)/2;
+
+twoi = 2*sin(u)*cos(v)
+
+<span class="comment">% multipy by sin(u) and use the identity sin^2(u) = 1 - cos^2(u)</span>
+
+twoi2 = 2*(1-(cos(u))^2)*cos(v)
+</pre><pre class="codeoutput">
+twoi =
+
+     0
+
+
+twoi2 =
+
+     0
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%%APPM 4600 Homework 1
+
+clc
+clear
+close all
+
+% 1: i)Need to plot p(x)for several x values
+%   ii) Plot p(x) using a different form
+%  iii) find the discrepancy in the two graphs
+
+%% Problem 1i
+% Creating X variable
+x = 1.920:0.001: 2.080 ;
+
+% Creating P(X)
+p1 = x.^9 - 18.*x.^8 +144.*x.^7 - 672.*x.^6 +2016.*x.^5 - 4032.*x.^4 +5376.*x.^3 - 4608.*x.^2 +2304.*x - 512;
+% Dummy Variable to plot against
+x1 = linspace(0,max(x),length(x));
+
+% Plotting the results
+figure
+plot(x1,p1)
+title('Problem 1i Graph')
+xlabel('x-axis')
+ylabel('y-axis')
+
+%% Problem 1ii
+
+% Creating P(x) for problem 1ii
+p2 = (x-2).^9;
+
+figure
+plot(x1,p2)
+title('Problem 1ii Graph')
+xlabel('x-axis')
+ylabel('y-axis')
+
+%% Problem 1iii
+
+% The discrepancy is that (x-2)^9 is smooth while the other form is very
+% rough
+
+%The reason is because several values are being lost as they are too small
+%for the computer
+
+%The (x-2)^9 form is correct
+
+% find absolute error!!!!!!!!!!!
+%% Problem 2i
+
+x = 2*10^-100;
+z = sqrt(x+1)
+
+y = ((z-1 * -z))/(-z)
+
+%% Problem 2ii
+
+%sin(x) - sin(y) = 2sin((x-y)/2)cos((x+y)/2)
+
+% Use trig identities to avoid the cancellation of sines
+
+%Create dummy variables that are approximately equal
+x = 100;
+y= x - 10^-50;
+u = (x-y)/2;
+v = (x+y)/2;
+
+twoi = 2*sin(u)*cos(v)
+
+% multipy by sin(u) and use the identity sin^2(u) = 1 - cos^2(u)
+
+twoi2 = 2*(1-(cos(u))^2)*cos(v)
+
+
+##### SOURCE END #####
+--></body></html>
